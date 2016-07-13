@@ -1,12 +1,8 @@
-QT += core
-QT -= gui
+QT += core gui opengl
 
 CONFIG += c++11
-
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = pon_framework
-CONFIG += console
-CONFIG -= app_bundle
-
 
 # project build directories
 DESTDIR     = $$system(pwd)
@@ -23,13 +19,14 @@ CUDA_DIR      = /opt/cuda
 # Path to header and libs files
 INCLUDEPATH  += $$CUDA_DIR/include
 QMAKE_LIBDIR += $$CUDA_DIR/lib64
+LIBS += -L/usr/local/lib -lGLU
 }
 
 
 # libs used in your code
 LIBS += -lcudart -lcuda
 # GPU architecture
-CUDA_ARCH     = sm_20                # Yeah! I've a new device. Adjust with your compute capability
+CUDA_ARCH     = sm_35
 # Here are some NVCC flags I've always used by default.
 NVCCFLAGS     = --compiler-options -std=c++98 # -fno-strict-aliasing -use_fast_math --ptxas-options=-v
 
@@ -55,7 +52,9 @@ DISTFILES +=
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    network.cpp
+    network.cpp \
+    renderengine.cpp
 
 HEADERS += \
-    network.h
+    network.h \
+    renderengine.h
