@@ -2,7 +2,7 @@ QT += core gui opengl
 
 CONFIG += c++11
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-TARGET = pon_framework
+TARGET = grapher.out
 
 # project build directories
 DESTDIR     = $$system(pwd)
@@ -13,9 +13,9 @@ QMAKE_CXXFLAGS_RELEASE =-O3
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    network.cpp \
     renderengine.cpp
 
 HEADERS += \
-    network.h \
     renderengine.h
+
+LIBS += -L/usr/local/lib -lGLU
