@@ -13,9 +13,15 @@ QMAKE_CXXFLAGS_RELEASE =-O3
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    renderengine.cpp
+    layer.cpp \
+    mainwindow.cpp
 
 HEADERS += \
-    renderengine.h
+    node.h \
+    rgb.h \
+    edge.h \
+    layer.h \
+    mainwindow.h \
+    renderer.h
 
 LIBS += -L/usr/local/lib -lGLU
